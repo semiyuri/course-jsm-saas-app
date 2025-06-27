@@ -1,12 +1,42 @@
-import { Button } from "@/components/ui/button";
+import CompanionCard from "@/components/companion-card";
+import CompanionsList from "@/components/companions-list";
 import React from "react";
 
 const Page = () => {
   return (
-    <div>
-      <h1 className="text-2xl underline">Hello World</h1>
-      <Button>Click Me</Button>
-    </div>
+    <main>
+      <h1>Popular Companions</h1>
+
+      <section className="home-section">
+        <CompanionCard
+          id="1"
+          title="Companion 1"
+          content="This is the first companion."
+          tags={["weapon"]}
+          color="#ffb6c1"
+        />
+
+        <CompanionCard
+          id="2"
+          title="Companion 2"
+          content="This is the second companion."
+          tags={["character"]}
+          color="#87ceeb"
+        />
+
+        <CompanionCard
+          id="3"
+          title="Companion 3"
+          content="This is the third companion."
+          tags={["character", "new"]}
+          color="#96dab7"
+        />
+      </section>
+
+      <section className="home-section">
+        <CompanionsList />
+      </section>
+    </main>
   );
 };
 
