@@ -28,7 +28,7 @@ const CompanionCard = ({ id, title, content, tags, color }: Props) => {
       <p className="text-sm">{content}</p>
 
       <Link href={`/companions/${id}`} className="w-full">
-        <button className="btn-primary w-full justify-center">
+        <button className="btn-black w-full justify-center">
           View Details
         </button>
       </Link>
