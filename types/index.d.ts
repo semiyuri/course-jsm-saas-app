@@ -1,4 +1,3 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 enum Subject {
   maths = "maths",
   language = "language",
@@ -10,3 +9,12 @@ enum Subject {
   finance = "finance",
   business = "business",
 }
+
+type Companion = {
+  $id: string;
+  name: string;
+  subject: Subject;
+  topic: string;
+  duration: number;
+  bookmarked: boolean;
+};
