@@ -6,14 +6,7 @@ import { usePathname } from "next/navigation";
 
 import { navItems } from "@/lib/constants";
 import { cn } from "@/lib/utils";
-import {
-  SignedOut,
-  SignInButton,
-  SignUpButton,
-  SignedIn,
-  UserButton,
-} from "@clerk/nextjs";
-import { Button } from "./ui/button";
+import { SignedOut, SignInButton, SignedIn, UserButton } from "@clerk/nextjs";
 
 const NavItems = () => {
   const pathname = usePathname();
@@ -34,14 +27,8 @@ const NavItems = () => {
 
       <SignedOut>
         <SignInButton>
-          <Button className="cursor-pointer">Sign In</Button>
+          <button className="btn-signin">Sign In</button>
         </SignInButton>
-
-        <SignUpButton>
-          <Button className="cursor-pointer" variant="outline">
-            Sign Up
-          </Button>
-        </SignUpButton>
       </SignedOut>
 
       <SignedIn>
