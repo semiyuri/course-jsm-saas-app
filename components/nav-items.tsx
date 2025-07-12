@@ -6,6 +6,14 @@ import { usePathname } from "next/navigation";
 
 import { navItems } from "@/lib/constants";
 import { cn } from "@/lib/utils";
+import {
+  SignedOut,
+  SignInButton,
+  SignUpButton,
+  SignedIn,
+  UserButton,
+} from "@clerk/nextjs";
+import { Button } from "./ui/button";
 
 const NavItems = () => {
   const pathname = usePathname();
@@ -23,6 +31,22 @@ const NavItems = () => {
           {navItem.name}
         </Link>
       ))}
+
+      <SignedOut>
+        <SignInButton>
+          <Button className="cursor-pointer">Sign In</Button>
+        </SignInButton>
+
+        <SignUpButton>
+          <Button className="cursor-pointer" variant="outline">
+            Sign Up
+          </Button>
+        </SignUpButton>
+      </SignedOut>
+
+      <SignedIn>
+        <UserButton />
+      </SignedIn>
     </div>
   );
 };
