@@ -23,6 +23,8 @@ import {
 } from "./ui/select";
 import { subjects } from "@/lib/constants";
 import { Textarea } from "./ui/textarea";
+import { createCompanion } from "@/lib/actions/companion.actions";
+import { redirect } from "next/navigation";
 
 const CompanionForm = () => {
   const form = useForm<CompanionFormSchema>({
@@ -37,8 +39,14 @@ const CompanionForm = () => {
     },
   });
 
-  const onSubmit = (data: CompanionFormSchema) => {
-    console.log("Form submitted with data:", data);
+  const onSubmit = async (data: CompanionFormSchema) => {
+    const companion = await createCompanion(data);
+
+    if (companion) {
+      redirect(`/companions/${companion.id}`);
+    } else {
+      console.error("Failed to create companion");
+    }
   };
 
   return (
@@ -77,7 +85,7 @@ const CompanionForm = () => {
                   defaultValue={field.value}
                   value={field.value}
                 >
-                  <SelectTrigger className="input">
+                  <SelectTrigger className="input capitalize">
                     <SelectValue placeholder="Select the subject" />
                   </SelectTrigger>
 
@@ -199,7 +207,11 @@ const CompanionForm = () => {
           )}
         />
 
-        <Button type="submit" className="w-full cursor-pointer mt-4">
+        <Button
+          type="submit"
+          className="w-full cursor-pointer mt-4"
+          disabled={form.formState.isSubmitting}
+        >
           Build Your Companion
         </Button>
       </form>
