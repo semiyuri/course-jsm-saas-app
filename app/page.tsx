@@ -12,25 +12,25 @@ const Page = () => {
       <section className="home-section">
         <CompanionCard
           id="1"
-          title="Companion 1"
-          content="This is the first companion."
-          tags={["weapon"]}
+          name="Companion 1"
+          topic="This is the first companion."
+          subject="weapon"
           color="#ffb6c1"
         />
 
         <CompanionCard
           id="2"
-          title="Companion 2"
-          content="This is the second companion."
-          tags={["character"]}
+          name="Companion 2"
+          topic="This is the second companion."
+          subject="character"
           color="#87ceeb"
         />
 
         <CompanionCard
           id="3"
-          title="Companion 3"
-          content="This is the third companion."
-          tags={["character", "new"]}
+          name="Companion 3"
+          topic="This is the third companion."
+          subject="character"
           color="#96dab7"
         />
       </section>
