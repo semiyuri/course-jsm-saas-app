@@ -5,6 +5,7 @@ import React, { useRef, useState } from "react";
 import Image from "next/image";
 import Lottie, { LottieRefCurrentProps } from "lottie-react";
 import soundwaves from "@/constants/soundwaves.json";
+import { addToSessionHistory } from "@/lib/actions/companion.actions";
 
 interface Props {
   companionId: string;
@@ -17,7 +18,13 @@ interface Props {
   voice: string;
 }
 
-const CompanionComponent = ({ name, subject, userName, userImage }: Props) => {
+const CompanionComponent = ({
+  companionId,
+  name,
+  subject,
+  userName,
+  userImage,
+}: Props) => {
   const lottieRef = useRef<LottieRefCurrentProps>(null);
   const [isMuted, setIsMuted] = useState(false);
 
@@ -31,6 +38,10 @@ const CompanionComponent = ({ name, subject, userName, userImage }: Props) => {
         lottieRef.current.stop();
       }
     }
+  };
+
+  const handleStartSession = () => {
+    addToSessionHistory(companionId);
   };
 
   return (
@@ -92,6 +103,7 @@ const CompanionComponent = ({ name, subject, userName, userImage }: Props) => {
             className={cn(
               "rounded-lg py-2 cursor-pointer transition-colors w-full text-white bg-primary",
             )}
+            onClick={handleStartSession}
           >
             Start Session
           </button>
